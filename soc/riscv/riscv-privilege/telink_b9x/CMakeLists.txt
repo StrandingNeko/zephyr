@@ -56,3 +56,16 @@ zephyr_link_libraries(
 )
 
 endif()
+
+if (CONFIG_BOOTLOADER_EXTERNAL_SIGNING)
+	# Fetch pubkey file from Certificate Authority and put into ${ZEPHYR_BINARY_DIR}
+	execute_process(
+		COMMAND
+		cp ${ZEPHYR_BASE}/../bootloader/mcuboot/generated-pubkey.c ${ZEPHYR_BINARY_DIR}/generated-pubkey.c
+	)
+
+	# Generated external public key file is added as a source
+	zephyr_sources(
+		${ZEPHYR_BINARY_DIR}/generated-pubkey.c
+	)
+endif()

@@ -35,3 +35,7 @@ config TELINK_B9X_MCUBOOT_STARTUP
 	help
 	  Run Telink specific vendor code before MCUBoot
 	  main process
+
+config BOOTLOADER_EXTERNAL_SIGNING
+	bool "Bootloader external signing"
+	depends on SOC_SERIES_RISCV_TELINK_B9X && MCUBOOT

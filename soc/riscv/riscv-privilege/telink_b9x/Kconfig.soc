@@ -124,3 +124,8 @@ config TELINK_B9X_MATTER_RETENTION_LAYOUT
 	default n
 	help
 		This option enables support Matter retention layout
+
+config BOOTLOADER_EXTERNAL_SIGNING
+	bool "Bootloader external signing"
+	depends on SOC_SERIES_RISCV_TELINK_B9X
+	default n
