@@ -98,16 +98,14 @@ _attribute_data_retention_sec_ struct {
  */
 void soc_load_rf_parameters_normal(void)
 {
-	if (!blt_miscParam.ext_cap_en) {
-		unsigned char cap_freq_ofset;
+	unsigned char cap_freq_ofset;
 
-		flash_read_page(FIXED_PARTITION_OFFSET(vendor_partition) +
-		TLX_CALIBRATION_ADDR_OFFSET, 1, &cap_freq_ofset);
-		if (cap_freq_ofset != 0xff) {
-			soc_nvParam.cap_freq_offset_en = 1;
-			soc_nvParam.cap_freq_offset_value = cap_freq_ofset;
-			rf_update_internal_cap(soc_nvParam.cap_freq_offset_value);
-		}
+	flash_read_page(FIXED_PARTITION_OFFSET(vendor_partition) +
+	TLX_CALIBRATION_ADDR_OFFSET, 1, &cap_freq_ofset);
+	if (cap_freq_ofset != 0xff) {
+		soc_nvParam.cap_freq_offset_en = 1;
+		soc_nvParam.cap_freq_offset_value = cap_freq_ofset;
+		rf_update_internal_cap(soc_nvParam.cap_freq_offset_value);
 	}
 }
 
