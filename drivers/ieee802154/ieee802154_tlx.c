@@ -59,6 +59,10 @@ static struct tlx_enh_ack_table enh_ack_table;
 static struct tlx_mac_keys mac_keys;
 #endif /* CONFIG_IEEE802154_2015 */
 
+#if CONFIG_SOC_SERIES_RISCV_TELINK_TLX_RETENTION
+__attribute__((section(".bss")))  uint8_t rxpkt_buffer[TLX_TRX_LENGTH] = {0};
+__attribute__((section(".bss")))  uint8_t txpkt_buffer[TLX_TRX_LENGTH] = {0};
+#endif /* CONFIG_SOC_SERIES_RISCV_TELINK_TLX_RETENTION */
 /* TLX data structure */
 static struct  tlx_data data = {
 #ifdef CONFIG_OPENTHREAD_FTD
@@ -71,6 +75,11 @@ static struct  tlx_data data = {
 /* mac keys data */
 	.mac_keys = &mac_keys,
 #endif /* CONFIG_IEEE802154_2015 */
+
+#if CONFIG_SOC_SERIES_RISCV_TELINK_TLX_RETENTION
+	.rx_buffer = rxpkt_buffer,
+	.tx_buffer = txpkt_buffer,
+#endif /* CONFIG_SOC_SERIES_RISCV_TELINK_TLX_RETENTION */
 };
 
 #ifdef CONFIG_OPENTHREAD_FTD

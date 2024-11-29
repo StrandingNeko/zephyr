@@ -95,8 +95,13 @@ struct tlx_mac_keys {
 /* data structure */
 struct tlx_data {
 	uint8_t mac_addr[IEEE802154_FRAME_LENGTH_ADDR_EXT];
+#if CONFIG_SOC_SERIES_RISCV_TELINK_TLX_RETENTION
+	uint8_t *rx_buffer;
+	uint8_t *tx_buffer;
+#else
 	uint8_t rx_buffer[TLX_TRX_LENGTH] __aligned(4);
 	uint8_t tx_buffer[TLX_TRX_LENGTH] __aligned(4);
+#endif /* CONFIG_SOC_SERIES_RISCV_TELINK_TLX_RETENTION */
 	struct net_if *iface;
 	struct k_sem tx_wait;
 	struct k_sem ack_wait;
