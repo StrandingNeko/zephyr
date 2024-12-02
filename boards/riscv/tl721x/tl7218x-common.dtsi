@@ -208,8 +208,8 @@
 
 &gspi {
 	status = "okay";
-	cs0-pin = "GPIO_PA1";
-	pinctrl-0 = <&gspi_clk_pa2_default &gspi_miso_pa3_default &gspi_mosi_pa4_default>;
+	cs0-pin = "GPIO_PF3";
+	pinctrl-0 = <&gspi_clk_pf4_default &gspi_miso_pf6_default &gspi_mosi_pf7_default>;
 	pinctrl-names = "default";
 };
 

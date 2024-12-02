@@ -85,6 +85,11 @@ jobs:
         cd ..
         west build -b tl7218x                  -d build_adc_tl721x                       zephyr/samples/drivers/adc                               -- -DCONFIG_COMPILER_WARNINGS_AS_ERRORS=y
 
+    - name: Build TL721x samples/drivers/spi_flash
+      run: |
+        cd ..
+        west build -b tl7218x                  -d build_spi_flash_tl721x                 zephyr/samples/drivers/spi_flash                        -- -DCONFIG_COMPILER_WARNINGS_AS_ERRORS=y
+
     # - name: Build TL721X net/openthread/cli
     #   run: |
     #     cd ..
@@ -129,6 +134,7 @@ jobs:
         cp ../build_adc_tl721x/zephyr/zephyr.bin                       telink_build_artifacts/tl721x_adc.bin
         cp ../build_usb_console_tl721x/zephyr/zephyr.bin               telink_build_artifacts/tl721x_usb_console.bin
         cp ../build_crypto_mbedtls_tl721x/zephyr/zephyr.bin            telink_build_artifacts/tl721x_mbedtls.bin
+        cp ../build_spi_flash_tl721x/zephyr/zephyr.bin                 telink_build_artifacts/tl721x_spi_flash.bin
         cp ../modules/hal/telink/zephyr/blobs/lib_zephyr_tl721x.a      telink_build_artifacts/lib_zephyr_tl721x.a
 
     - name: Publish artifacts
