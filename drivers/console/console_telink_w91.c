@@ -28,6 +28,7 @@ int console_init(void)
 	__stdout_hook_install(arch_printk_char_out);
 #endif
 	telink_w91_debug_isr_set(true, console_data_received, &telink_w91_console_input);
+	// UNREACHABLE
 	return 0;
 }
 

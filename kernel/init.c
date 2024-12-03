@@ -771,8 +771,11 @@ FUNC_NORETURN void z_cstart(void)
 #if CONFIG_BOARD_EARLY_INIT_HOOK
 	board_early_init_hook();
 #endif
+	// printk("\n !!! ERROR \n");
+	// while(1) {}
 	/* perform basic hardware initialization */
 	z_sys_init_run_level(INIT_LEVEL_PRE_KERNEL_1);
+	// UNREACHABLE
 #if defined(CONFIG_SMP)
 	arch_smp_init();
 #endif

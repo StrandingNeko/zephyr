@@ -298,7 +298,6 @@ void riscv_plic_set_priority(uint32_t irq, uint32_t priority)
 	if (priority > config->max_prio) {
 		priority = config->max_prio;
 	}
-
 	sys_write32(priority, prio_addr);
 }
 

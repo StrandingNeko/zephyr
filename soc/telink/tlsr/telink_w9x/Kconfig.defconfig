@@ -29,7 +29,7 @@ config 2ND_LVL_ISR_TBL_OFFSET
 
 config NUM_IRQS
 	int
-	default 59
+	default 400
 
 config PINCTRL
 	bool

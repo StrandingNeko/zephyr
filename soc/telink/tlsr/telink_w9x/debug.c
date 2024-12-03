@@ -86,9 +86,12 @@ static void telink_w91_debug_init(void)
 
 			__write_reg32(UART_BASE_ADDR + OFT_ATCUART_IER, 0);
 
-			IRQ_CONNECT(UART_ISR_NUM + CONFIG_2ND_LVL_ISR_TBL_OFFSET, 0,
-				telink_w91_debug_isr, NULL, 0);
-			riscv_plic_set_priority(IRQ_TO_L2(UART_ISR_NUM), 1);
+			// IRQ_CONNECT(UART_ISR_NUM + CONFIG_2ND_LVL_ISR_TBL_OFFSET, 0,
+			// 	telink_w91_debug_isr, NULL, 0);
+			// PASSES
+			// check if calls in standalone Zephyr [+]
+			// riscv_plic_set_priority(IRQ_TO_L2(UART_ISR_NUM), 1);
+			// UNREACHABLE
 		}
 		arch_irq_unlock(keys);
 	}
@@ -97,17 +100,17 @@ static void telink_w91_debug_init(void)
 void telink_w91_debug_isr_set(bool enabled, void (*on_rx)(char c, void *ctx), void *ctx)
 {
 	telink_w91_debug_init();
-	if (enabled) {
-		telink_w91_debug_isr_data.on_rx = on_rx;
-		telink_w91_debug_isr_data.ctx = ctx;
-		__write_reg32(UART_BASE_ADDR + OFT_ATCUART_IER, (1 << 0));
-		riscv_plic_irq_enable(IRQ_TO_L2(UART_ISR_NUM));
-	} else {
-		riscv_plic_irq_disable(IRQ_TO_L2(UART_ISR_NUM));
-		__write_reg32(UART_BASE_ADDR + OFT_ATCUART_IER, 0);
-		telink_w91_debug_isr_data.on_rx = NULL;
-		telink_w91_debug_isr_data.ctx = NULL;
-	}
+	// if (enabled) {
+	// 	telink_w91_debug_isr_data.on_rx = on_rx;
+	// 	telink_w91_debug_isr_data.ctx = ctx;
+	// 	__write_reg32(UART_BASE_ADDR + OFT_ATCUART_IER, (1 << 0));
+	// 	riscv_plic_irq_enable(IRQ_TO_L2(UART_ISR_NUM));
+	// } else {
+	// 	riscv_plic_irq_disable(IRQ_TO_L2(UART_ISR_NUM));
+	// 	__write_reg32(UART_BASE_ADDR + OFT_ATCUART_IER, 0);
+	// 	telink_w91_debug_isr_data.on_rx = NULL;
+	// 	telink_w91_debug_isr_data.ctx = NULL;
+	// }
 }
 
 int arch_printk_char_out(int c)
