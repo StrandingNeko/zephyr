@@ -4899,7 +4899,7 @@ West:
   collaborators:
     - JiaT75
   files:
-    - modules/lzma/
+    - ../modules/lib/lzma/
   labels:
     - "area: Compression"
 
