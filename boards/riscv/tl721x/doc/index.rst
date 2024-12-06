@@ -7,7 +7,7 @@ Overview
 ********
 
 The TL7218X Generic Starter Kit is a hardware platform which
-can be used to verify the `Telink TLSR9 series chipset`_ and develop applications
+can be used to verify the `Telink TLX series chipset` and develop applications
 for several 2.4 GHz air interface standards including Bluetooth low energy,
 Zigbee 3.0, Homekit, 6LoWPAN, Thread and 2.4 Ghz proprietary.
 
@@ -15,26 +15,25 @@ Zigbee 3.0, Homekit, 6LoWPAN, Thread and 2.4 Ghz proprietary.
      :align: center
      :alt: TL7218X
 
-More information about the board can be found at the `Telink B95 Generic Starter Kit Hardware Guide`_ website.
+.. More information about the board can be found at the `Telink TL7218X Generic Starter Kit Hardware Guide`_ website.
 
 Hardware
 ********
 
 TL7218X is a single chip SoC for Bluetooth low energy and 802.15.4. The embedded 2.4GHz transceiver
-supports Bluetooth low energy, 802.15.4 as well as 2.4GHz proprietary operation. The TLSR9258 integrates a
-powerful 32-bit RISC-V MCU, 512KB SRAM including at least 256KB retention SRAM, up to 4MB embedded
-and up to 16MB external flash, 12-bit ADC, PWM, flexible IO interfaces, and other peripheral blocks. The
-TLSR9258 supports standards and industrial alliance specifications including Bluetooth LE, Zigbee, Thread,
-Matter, 2.4GHz proprietary standard.
+supports Bluetooth low energy, 802.15.4 as well as 2.4GHz proprietary operation.
+The TL7218X integrates a powerful 32-bit RISC-V MCU, 512 or 256 KB SRAM including up to 256 KB retention SRAM,
+2 MB or 1 MB embedded flash, 12-bit ADC, PWM, flexible IO interfaces, and other peripheral blocks for IoT
+applications.
 
-.. figure:: img/tl7218x_block_diagram.jpg
+.. figure:: img/tl7218x_block_diagram.png
      :align: center
      :alt: TL7218X_SOC
 
 The TL7218X default board configuration provides the following hardware components:
 
 - RF conducted antenna
-- 1 MB External SPI Flash memory with reset button. (Possible to mount 1/2/4 MB)
+- 2 MB External SPI Flash memory with reset button. (Possible to mount 1/2/4 MB)
 - Chip reset button
 - USB type-C interface
 - 4-wire JTAG
@@ -80,8 +79,6 @@ The Zephyr TL7218X board configuration supports the following hardware features:
 +----------------+------------+------------------------------+
 | USB (device)   | on-chip    | usb_dc                       |
 +----------------+------------+------------------------------+
-| AES            | on-chip    | mbedtls                      |
-+----------------+------------+------------------------------+
 | PKE            | on-chip    | mbedtls                      |
 +----------------+------------+------------------------------+
 
@@ -108,7 +105,7 @@ System Clock
 ------------
 
 The TL7218X board is configured to use the 24 MHz external crystal oscillator
-with the on-chip PLL/DIV generating the 48 MHz system clock.
+with the on-chip PLL/DIV generating the 60 MHz system clock.
 The following values also could be assigned to the system clock in the board DTS file
 (``boards/riscv/tl721x/tl7218x-common.dtsi``):
 
@@ -137,10 +134,10 @@ Peripheral's pins on the SoC are mapped to the following GPIO pins in the
 ``boards/riscv/tl721x/tl7218x-common.dtsi`` file:
 
 - UART0 TX: PB2, RX: PB3
-- PWM Channel 0: PD0
+- PWM Channel 0: PB7
 - LSPI CLK: PE1, MISO: PE3, MOSI: PE2
-- GSPI CLK: PA2, MISO: PA3, MOSI: PA4
-- I2C SCL: PC0, SDA: PC1
+- GSPI CLK: PF4, MISO: PF6, MOSI: PF7
+- I2C SCL: PE6, SDA: PE7
 
 Serial Port
 -----------
@@ -179,7 +176,7 @@ serial port:
 
 .. code-block:: console
 
-   *** Booting Zephyr OS version 2.5.0  ***
+   *** Booting Zephyr OS build zephyr-v3.3.0-xxxx-xxxxxxxxxxxxx  ***
    Hello World! tl7218x
 
 
@@ -211,8 +208,6 @@ References
 
 .. target-notes::
 
-.. _Telink TLSR9 series chipset: [UNDER_DEVELOPMENT]
-.. _Telink B95 Generic Starter Kit Hardware Guide: [UNDER_DEVELOPMENT]
 .. _Burning and Debugging Tools for all Series: https://wiki.telink-semi.cn/wiki/IDE-and-Tools/Burning-and-Debugging-Tools-for-all-Series/
 .. _Burning and Debugging Tool for Linux: https://wiki.telink-semi.cn/tools_and_sdk/Tools/BDT/Telink_libusb_BDT-Linux-X64-V1.6.0.zip
 .. _Burning and Debugging Tool for Windows: https://wiki.telink-semi.cn/tools_and_sdk/Tools/BDT/BDT.zip
