@@ -176,6 +176,11 @@
 	};
 };
 
+&gpioa {
+	interrupts = <39 1>;
+	status = "okay";
+};
+
 &gpiob {
 	status = "okay";
 };
