@@ -27,6 +27,8 @@ static int pwm_tlx_init(const struct device *dev)
 {
 	const struct pwm_tlx_config *config = dev->config;
 
+// adopt with zigbee , use the initial div setting part .
+#if 0
 	uint32_t pwm_clk_div;
 
 	/* Calculate and check PWM clock divider */
@@ -37,7 +39,7 @@ static int pwm_tlx_init(const struct device *dev)
 
 	/* Set PWM Peripheral clock */
 	pwm_set_clk((unsigned char) (pwm_clk_div & 0xFF));
-
+#endif
 	return 0;
 }
 
