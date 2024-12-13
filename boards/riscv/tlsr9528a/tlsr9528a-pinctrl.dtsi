@@ -15,10 +15,10 @@
 	/* UART0: TX(PB2), RX(PB3), RTS(PB4), CTS(PB6) */
 
 	uart0_tx_pb2_default: uart0_tx_pb2_default {
-		pinmux = <B9x_PINMUX_SET(B9x_PORT_B, B9x_PIN_2, B92_FUNC_UART0_TX)>;
+		pinmux = <B9x_PINMUX_SET(B9x_PORT_D, B9x_PIN_2, B92_FUNC_UART0_TX)>;
 	};
 	uart0_rx_pb3_default: uart0_rx_pb3_default {
-		pinmux = <B9x_PINMUX_SET(B9x_PORT_B, B9x_PIN_3, B92_FUNC_UART0_RTX_IO)>;
+		pinmux = <B9x_PINMUX_SET(B9x_PORT_D, B9x_PIN_1, B92_FUNC_UART0_RTX_IO)>;
 	};
 	uart0_rts_pb4_default: uart0_rts_pb4_default {
 		pinmux = <B9x_PINMUX_SET(B9x_PORT_B, B9x_PIN_4, B92_FUNC_UART0_RTS)>;
@@ -72,13 +72,12 @@
 		pinmux = <B9x_PINMUX_SET(B9x_PORT_A, B9x_PIN_3, B92_FUNC_GSPI_MISO_IO)>;
 	};
 
-	/* Define I2C pins: SCL(PC0), SDA(PC1) */
-
-	i2c_scl_pc0_default: i2c_scl_pc0_default {
-		pinmux = <B9x_PINMUX_SET(B9x_PORT_C, B9x_PIN_0, B92_FUNC_I2C_SCL_IO)>;
+	/* Define I2C pins: SCL(PA1), SDA(PA0)*/
+	i2c_scl_pa1_default: i2c_scl_pa1_default {
+		pinmux = <B9x_PINMUX_SET(B9x_PORT_A, B9x_PIN_1, B92_FUNC_I2C_SCL_IO | (B9x_PULL_UP<<5))>;
 	};
-	i2c_sda_pc1_default: i2c_sda_pc1_default {
-		pinmux = <B9x_PINMUX_SET(B9x_PORT_C, B9x_PIN_1, B92_FUNC_I2C_SDA_IO)>;
+	i2c_sda_pa0_default: i2c_sda_pa0_default {
+		pinmux = <B9x_PINMUX_SET(B9x_PORT_A, B9x_PIN_0, B92_FUNC_I2C_SDA_IO | (B9x_PULL_UP<<5))>;
 	};
 
 	/* Define ADC pins: PB0..PB7, PD0-PD1 */
