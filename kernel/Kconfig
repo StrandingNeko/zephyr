@@ -961,4 +961,10 @@ config HAS_DYNAMIC_DEVICE_HANDLES
 
 endmenu
 
+config STARTUP_OPTIMIZATE
+	bool "Optimze startup proc"
+	default n
+	help
+	  This option enables pre opertaion to support in kernel.
+
 rsource "Kconfig.vm"
